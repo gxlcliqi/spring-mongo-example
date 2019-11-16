@@ -7,8 +7,7 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = ManualconfigApplication.class)
-@ActiveProfiles("test")
 public class BaseEmbeddedMongoTest {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseEmbeddedMongoTest.class);
@@ -43,5 +39,11 @@ public class BaseEmbeddedMongoTest {
     public static void tearDown() throws Exception {
         _mongod.stop();
         _mongodExe.stop();
+        logger.info("mongod stopped on {}:{}", host, port);
+    }
+
+    @Test
+    public void testA() {
+
     }
 }
